@@ -27,7 +27,13 @@ func main(){
 	r, err := c.Read(ctx, &pb.ObjectRead{BucketName:"bucket",ObjectName:"object"})
 	if err != nil {
 		log.Fatalf("could not read: %v", err)
-		fmt.Printf("could not read: %v /n", err)
+		fmt.Printf("could not read: %v \n", err)
 	}
-	fmt.Printf("Read: %v", r.Number)
+	fmt.Printf("Read: %v \n", r.Number)
+	w, err := c.Write(ctx, &pb.ObjectWrite{BucketName:"bucket",ObjectName:"object",Destination:"destination"})
+	if err != nil {
+		log.Fatalf("could not write: %v", err)
+		fmt.Printf("could not write: %v \n", err)
+	}
+	fmt.Printf("Write: %v \n", w.Number)
 }
