@@ -24,6 +24,4 @@ message ObjectWrite{
 }
 
 message Completed{
-  int32 number = 1;
-  string error = 2;
 }
