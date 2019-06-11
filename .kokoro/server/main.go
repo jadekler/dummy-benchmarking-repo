@@ -19,13 +19,13 @@ type server struct{}
 
 func (s *server) Read(ctx context.Context, in *pb.ObjectRead) (*pb.Completed, error) {
 	storage.Read("a", in.BucketName, in.ObjectName)
-	fmt.Printf("%s/n", "Reading")
+	fmt.Printf("%s\n", "Reading")
 	return &pb.Completed{Number: 2, Error: ""}, nil
 }
 
 func (s *server) Write(ctx context.Context, in *pb.ObjectWrite) (*pb.Completed, error) {
 	storage.Write("a", in.BucketName, in.ObjectName, in.Destination)
-	fmt.Printf("%s/n", "Writting")
+	fmt.Printf("%s\n", "Writting")
 	return &pb.Completed{Number: 1, Error: ""}, nil
 }
 
