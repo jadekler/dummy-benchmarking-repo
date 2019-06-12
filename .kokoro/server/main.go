@@ -10,20 +10,18 @@ import (
 	"google.golang.org/grpc"
 )
 
-const (
-	port = ":50051"
-)
+const port = ":50051"
 
 type server struct{}
 
-func (s *server) Read(ctx context.Context, in *pb.ObjectRead) (*pb.Completed, error) {
+func (s *server) Read(ctx context.Context, in *pb.ObjectRead) (*pb.EmptyResponse, error) {
 	storage.Read(in.BucketName, in.ObjectName)
-	return &pb.Completed{}, nil
+	return &pb.EmptyResponse{}, nil
 }
 
-func (s *server) Write(ctx context.Context, in *pb.ObjectWrite) (*pb.Completed, error) {
+func (s *server) Write(ctx context.Context, in *pb.ObjectWrite) (*pb.EmptyResponse, error) {
 	storage.Write(in.BucketName, in.ObjectName, in.Destination)
-	return &pb.Completed{}, nil
+	return &pb.EmptyResponse{}, nil
 }
 
 func main() {

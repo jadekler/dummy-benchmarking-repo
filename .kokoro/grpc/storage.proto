@@ -7,8 +7,8 @@ option java_outer_classname = "grpcStorage";
 package storage_bench;
 
 service storage{
-  rpc Write(ObjectWrite) returns (Completed) {}
-  rpc Read(ObjectRead) returns (Completed){}
+  rpc Write(ObjectWrite) returns (EmptyResponse) {}
+  rpc Read(ObjectRead) returns (EmptyResponse){}
 }
 
 message ObjectRead{
@@ -23,5 +23,5 @@ message ObjectWrite{
   string destination = 3;
 }
 
-message Completed{
+message EmptyResponse{
 }
